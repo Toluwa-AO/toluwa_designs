@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "270603930893",
+    "project_id": "toluwadesign",
+    "storage_bucket": "toluwadesign.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:270603930893:android:aa19e23dc8f00c135af444",
+        "android_client_info": {
+          "package_name": "com.toluwani.portfolio"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCAY_o9oWzVbvu6LJXNjeYvh7CXDj8vaJo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
