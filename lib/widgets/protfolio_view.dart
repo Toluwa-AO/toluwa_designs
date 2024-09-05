@@ -30,7 +30,7 @@ class PortfolioCard extends HookWidget {
         child: AnimatedContainer(
           duration: Duration(milliseconds: 200),
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(screenWidth / 20),
+            borderRadius: BorderRadius.circular(screenWidth/20),
             boxShadow: isHovered.value
                 ? [BoxShadow(color: Colors.black26, blurRadius: 10)]
                 : [],
@@ -39,12 +39,12 @@ class PortfolioCard extends HookWidget {
             children: [
               // Image Layer
               ClipRRect(
-                borderRadius: BorderRadius.circular(screenWidth/16),
+                borderRadius: BorderRadius.circular(12),
                 child: Image.asset(
                   imageAssetPath,
-                  fit: BoxFit.fitHeight,
-                  width: screenWidth / 1.1,
-                  height: screenHeight / 1.1,
+                  fit: BoxFit.fill,
+                  width: screenWidth / 3.5,
+                  height: screenHeight / 2,
                   color: isHovered.value ? Colors.black.withOpacity(0.6) : null,
                   colorBlendMode: isHovered.value ? BlendMode.darken : null,
                 ),
@@ -72,3 +72,4 @@ class PortfolioCard extends HookWidget {
     );
   }
 }
+
