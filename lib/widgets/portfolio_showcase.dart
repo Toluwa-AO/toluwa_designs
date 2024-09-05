@@ -1,71 +1,76 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:toluwa_designs/utils/responisiveness.dart';
-import 'package:toluwa_designs/widgets/protfolio_view.dart';
 
-class PortfolioShowcase extends StatelessWidget {
-  const PortfolioShowcase({super.key});
+// The PortfolioCard widget, as previously defined
+class PortfolioCard extends HookWidget {
+  final String imageAssetPath;
+  final String title;
+  final VoidCallback onPressed;
+
+  const PortfolioCard({
+    Key? key,
+    required this.imageAssetPath,
+    required this.title,
+    required this.onPressed,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final isHovered = useState(false);
     final responsive = Responsive(context);
     final double screenWidth = MediaQuery.of(context).size.width;
     final double screenHeight = MediaQuery.of(context).size.height;
 
-    return Container(
-      width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height,
-      padding: EdgeInsets.fromLTRB(screenWidth/10, screenWidth/30, 0, 0),
-      color: Colors.black,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'Portfolio Showcase',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: responsive.h3,
-              fontFamily: 'Inter',
-              fontWeight: FontWeight.w900,
-              letterSpacing: -2.88,
-            ),
+    return MouseRegion(
+      onEnter: (_) => isHovered.value = true,
+      onExit: (_) => isHovered.value = false,
+      child: GestureDetector(
+        onTap: onPressed,
+        child: AnimatedContainer(
+          duration: Duration(milliseconds: 200),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(screenWidth/20),
+            boxShadow: isHovered.value
+                ? [BoxShadow(color: Colors.black26, blurRadius: 10)]
+                : [],
           ),
-          SizedBox(height: screenHeight/20),
-          Expanded(
-            child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: [
-                  PortfolioCard(
-                    imageAssetPath: 'assets/image1.png',
-                    title: 'Photography Portfolio',
-                    onPressed: () {
-                      // Handle the tap event
-                    },
-                  ),
-                  SizedBox(width: screenWidth/20),
-                  PortfolioCard(
-                    imageAssetPath: 'assets/image2.png',
-                    title: 'Project 2: Website Redesign',
-                    onPressed: () {
-                      // Handle the tap event
-                    },
-                  ),
-                  SizedBox(width: screenWidth/20 ),
-                  PortfolioCard(
-                    imageAssetPath: 'assets/image3.png',
-                    title: 'Project 3: Branding and Logo Design',
-                    onPressed: () {
-                      // Handle the tap event
-                    },
-                  ),
-                ],
+          child: Stack(
+            children: [
+              // Image Layer
+              ClipRRect(
+                borderRadius: BorderRadius.circular(12),
+                child: Image.asset(
+                  imageAssetPath,
+                  fit: BoxFit.fill,
+                  width: screenWidth / 3.5,
+                  height: screenHeight / 2,
+                  color: isHovered.value ? Colors.black.withOpacity(0.6) : null,
+                  colorBlendMode: isHovered.value ? BlendMode.darken : null,
+                ),
               ),
-            ),
+              // Text Layer (only visible when hovered)
+              if (isHovered.value)
+                Positioned.fill(
+                  child: Align(
+                    alignment: Alignment.center,
+                    child: Text(
+                      title,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: responsive.p2,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
 }
+
+take the clip react and turn it to a gridview
