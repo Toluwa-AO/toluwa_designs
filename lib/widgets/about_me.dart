@@ -39,7 +39,7 @@ class AboutMeView extends StatelessWidget {
                 Opacity(
                   opacity: 0.60,
                   child: Text(
-                    'Hello, I’m Toluwa Abimbola-Oladejo, a UI/UX designer based in Ibadan, Nigeria, with a background in programming and Flutter development. My journey began in software development, but my passion for creating user-centered designs led me to dive deep into UI/UX. Now, I combine my design expertise with technical skills to craft intuitive, cross-platform applications that are both visually appealing and functional.\nAs an Electrical and Electronics Engineering student at Covenant University, I’ve worked with diverse clients, consistently delivering designs that exceed expectations. I’m excited about the opportunity to collaborate and create exceptional user experiences.',
+                    'Hello, I’m Toluwa Abimbola-Oladejo, a UI/UX designer based in Ibadan, Nigeria. I started in software development, which led me to discover my passion for user-centered design. With a solid foundation in programming and Flutter, I create intuitive, cross-platform applications that are both visually appealing and functional. I’ve worked with diverse clients, consistently delivering designs that meet and exceed expectations. I’m excited about the opportunity to collaborate and create exceptional user experiences.',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: responsive.p2,
